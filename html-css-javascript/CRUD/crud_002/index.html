@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <table>
+        <tr>
+            <form onsubmit="event.preventDefault(); onformSubmit();" autocomplete="on">
+                <div>
+                    <label for="fullname">Fullname</label>
+
+                    <input type="text" name="fullname" id="fullname">
+
+                    <!------PREENCHIMENTO OBRIGATORIO------>
+                        <label class="validation-error hide" id="fullNameValidationError">This field is required</label>
+                </div>
+                <div>
+                    <label for="code">EMP Code</label>
+                    <input type="text" name="code" id="code">
+                </div>
+                <div>
+                    <label for="Sal">Salary</label>
+                    <input type="text" name="Sal" id="Sal">
+                </div>
+                <div>
+                    <label for="city">City</label>
+                    <input type="text" name="city" id="city">
+                </div>
+                <div class="form-action-buttons">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </tr>
+        <td>
+            <table class="list" id="employerlist">
+                <thead>
+                    <th>Fullname</th>
+                    <th>EMP Code</th>
+                    <th>Salary</th>
+                    <th>City</th>
+                    <th></th>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </td>
+    </table>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+<!--Pure JavaScript CRUD Operations with Html-->

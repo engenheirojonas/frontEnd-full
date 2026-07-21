@@ -1,0 +1,132 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #2d2d2d;
+}
+
+.container {
+    background: #fff;
+    height: 250px;
+    max-width: 410px;
+    border-radius: 7px;
+    padding: 16px 25px;
+}
+
+.container.active {
+    height: 530px;
+}
+.container {
+    background: #fff;
+    height: 250px;
+    max-width: 410px;
+    border-radius: 7px;
+    padding: 16px 25px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+}
+
+.header h1 {
+    font-weight: 500;
+}
+
+.container .form {
+    margin: 20px 0 25px;
+}
+
+.form :where(input, button) {
+    width: 100%;
+    height: 55px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+.form input {
+    font-size: 18px;
+    padding: 0 17px;
+    border: 1px solid #999;
+}
+
+.form button {
+    color: #fff;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 17px;
+    background: #8257e5;
+}
+
+.container .qr-code {
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    padding: 33px 0;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+}
+
+.qr-code {
+    width: 200px;
+}
+
+.qr-code img {
+    width: 200px;
+}
+
+.container.active .qr-code {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.5s 0.05s ease;
+}
+
+input, button {
+    width: 100%;
+    height: 50px;
+    outline: none;
+    border-radius: 5px;
+}
+
+button {
+    border: none;
+    background-color: #1d68d8;
+    font-size: 15px;
+    color: #fff;
+    cursor: pointer;
+}
+
+input {
+    border: 1px solid #8b8a8a;
+    padding-left: 10px;
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+
+.qr-code {
+    padding-left: 25px 0;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: 1s;
+}
+
+.container.active .qr-code {
+    opacity: 1;
+    pointer-events: auto;
+}

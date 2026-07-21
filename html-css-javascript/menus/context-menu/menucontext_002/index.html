@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu de contexto</title>
+    <style>
+        .custom-cm {
+            position: absolute;
+            display: none;
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+            width: 200px;
+            top: 0;
+            left: 0;
+        }
+
+        .custom-cm__item {
+            cursor: pointer;
+            padding: 8px 15px;
+        }
+
+        .custom-cm__item:hover {
+            background-color: #dd7171;
+        }
+
+        .custom-cm__divider {
+            border-bottom: 1px solid #eee;
+            margin: 10px 0;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1>Context Menu</h1>
+    <div class="custom-cm">
+        <div class="custom-cm__item">Item #1</div>
+        <div class="custom-cm__item">Item #2</div>
+        <div class="custom-cm__item">Item #3</div>
+        <div class="custom-cm__divider"></div>
+        <div class="custom-cm__item">Item #4</div>
+    </div>
+
+    <script>
+        const cm = document.querySelector(".custom-cm");
+
+        function showContextMenu(show = true) {
+            cm.style.display = show ? 'block' : 'none'; /*(?)if show is true then display is block (:)otherwise is none*/
+        }
+
+            /*e is the massive of instance events*/
+        window.addEventListener('contextmenu', (e) => {
+                 /*preventDefault anula o menu de contexto padrao*/
+            e.preventDefault()
+
+                /*showContextMenu mostra o novo elemento que nos aumentamos como contextmenu*/
+            showContextMenu()
+
+                /* isso serve para evitar que o menu de contexto apareça alem da borda vertical
+                    + cm.offsetHeight > window.innerHeight ? window.innerHeight - cm.offsetHeight : e.y;
+                */
+
+            cm.style.top = e.y + cm.offsetHeight > window.innerHeight ? window.innerHeight - cm.offsetHeight : e.y;
+
+            cm.style.left = e.x + cm.offsetWidth > window.innerWidth ? window.innerWidth - cm.offsetWidth : e.x;
+        });
+
+        window.addEventListener('click', () => {
+            showContextMenu(false)
+        });
+
+    </script>
+
+</body>
+</html>
+
+
+<!--Creating a Custom Context Menu using HTML CSS & JavaScript _ WEB DESIGN-->

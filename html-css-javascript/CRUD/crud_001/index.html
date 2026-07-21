@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Adicione sua tarefa</p>
+    <input id="entrada" type="text">
+    <button onclick="salvarDados()">Salvar</button>
+
+    <br>
+    <p>Tarefas a fazer:</p>
+
+    <div id="div_atualizar">
+        
+    </div>
+
+    <div>
+        <ul id="resultados">
+
+            <!--criaremos os li atraves do javascript
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            -->
+        </ul>
+    </div>
+
+
+    <script>
+                        //CRUD
+        let lista_tarefas = [];
+        let index = 0;
+
+ /****************Create ou Salvar************/   
+        
+        function salvarDados() {
+
+            /*--------Sem update---------*/
+                let entrada = document.getElementById("entrada").value;
+                // lista_tarefas.push(entrada)
+
+            /*--------com update---------*/
+                let entradaObj = {
+                    id: index,
+                    texto: entrada
+                }
+                index++; //ou index = index + 1
+                lista_tarefas.push(entradaObj);
+                    //console.log(entradaObj);
+            /*-----------------------------*/
+
+            //apos salvar mostrara os resultados
+            mostrar();
+        }
+
+/***
+        function limpar() {
+            let limp = document.getElementById("entrada").value;
+            limp.innerHTML = "";
+
+        }
+***/
+
+ /*****************Read ou Ler***************/    
+
+        function mostrar() {
+             let res = document.getElementById("resultados");
+
+                //ao salvar para mostrar vai so mostrar o que salvar por cada vez
+                //voce salva uma coisa e so aquela coisa aparece e nao os antigos registos
+             let itens = "";
+
+                //foreach vai percorrer todos index criados no vetor
+                //array function
+            lista_tarefas.forEach(
+                elemento => {
+                        //console.log(elemento);
+
+                        //ao idicionar um elemento no input, ao salvar isso sera adicionado tambem nos itens do li do ul
+
+                    /*
+                    itens += `<li>${elemento}</li>`; //sem update */
+
+
+                    //com update
+
+                         //criar elementos(div,input,...) html com javascript
+                    itens += `<li> 
+                        ${elemento.texto}
+                        <button onclick = "atualizar(${elemento.id})">
+                            Atualizar
+                        </button>
+
+                        <button onclick = "deletar(${elemento.id})">
+                            Deletar
+                        </button>
+                        </li>`; 
+                }
+            )
+                //o res ou os li do ul serao igual ao itens que sao os elementos ja salvos (itens) mais o novo elemento a salvar (elemento)
+            res.innerHTML = itens;
+        }
+
+ /**********Update ou Atualizar**********/
+ 
+        function atualizar(id) {
+            //let res = lista_tarefas.find(obj => obj.id === id);
+                //console.log(id);
+
+                //criar elementos(div,input,...) html com javascript
+            let lista =  `<input type="text" id="texoParaAtualizar">
+                    <button onclick="atualizarDados(${id})">
+                        Guardar
+                    </button>`; 
+            let div_atualizar = document.getElementById("div_atualizar");
+
+            div_atualizar.innerHTML = lista;
+        }
+
+        function atualizarDados(id) {
+            let texoParaAtualizar = document.getElementById("texoParaAtualizar");
+            let res = lista_tarefas.find(obj => obj.id === id);
+            res.texto = texoParaAtualizar.value;
+            mostrar();
+
+            let div_atualizar = document.getElementById("div_atualizar");
+            div_atualizar.innerHTML = "";
+        }
+
+        function deletar(id) {
+            let novalista = lista_tarefas.filter(obj => obj.id !== id);
+            lista_tarefas = novalista;
+            mostrar();
+
+        }
+
+    </script>
+</body>
+</html>
+
+
+
+<!--Como fazer um CRUD com JavasCript Para Iniciantes Passo a Passo 2025-->
