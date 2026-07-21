@@ -9,6 +9,8 @@ document.addEventListener("keypress", (e) => {
 
 function geraQrcode() {
     if(!dados_1.value) return;
+
     
-    qrcode.src = `api de code QR`;
+            /**https://goqr.me/api/ */
+    qrcode.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Example +${dados_1.value}`;
 }

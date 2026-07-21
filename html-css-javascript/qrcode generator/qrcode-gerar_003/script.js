@@ -4,11 +4,13 @@ btn.addEventListener('click', ()=> {
     let qrValue = input.value;
     if(!qrValue) return;
     btn.innerText = "Gerando ...";
-    img.src = `api do qr code`;
+
+        /**https://goqr.me/api/ */
+    img.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Example + ${qrValue}`;
+    
     img.addEventListener('load', ()=> {
         container.classList.add('active');
         btn.innerText = "Gerar Qr code";
-
     })
 })
 

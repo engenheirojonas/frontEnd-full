@@ -6,7 +6,9 @@ var qrImg = document.querySelector(".qr-image");
 generateBtn.onclick = function () {
     if (qrInput.value.length > 0) {
         generateBtn.innerHTML = "Generating QR Code..."
-        qrImg.src = "qr code api" + qrInput.value;
+
+            /**https://goqr.me/api/ */
+        qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Example + ${qrInput.value}`;
 
             /**this is to make sure that the qr code has been loaded fully before displaying it */
          qrImg.onload = function () {
